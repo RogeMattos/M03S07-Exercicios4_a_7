@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'M03S07'`, () => {
+  it(`should have as title 'M03S05'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('M03S07');
+    expect(app.title).toEqual('M03S05');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('M03S07 app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('M03S05 app is running!');
   });
 });
