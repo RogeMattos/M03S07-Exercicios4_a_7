@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit  {
   emailInformado: string | undefined;
   dataDeNascimento: string | undefined;
   usuarios: [any] | undefined
+  isModalOpen = false; // Variável para controlar a exibição do modal
 
   
   constructor(private http: HttpClient) {}
@@ -27,8 +28,9 @@ export class HomeComponent implements OnInit  {
       this.usuarios = data;
     });
   }
-
-
+  openModal(){
+    this.isModalOpen = true; // Abrir o modal quando o botão é clicado
+  }
   
 }
 
