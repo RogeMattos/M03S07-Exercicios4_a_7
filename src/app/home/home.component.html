@@ -19,11 +19,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Eduardo Silva</td>
-            <td>silva.eduardrs@gmail.com</td>
-            <td>01/01/0001</td>
+          <tr *ngFor="let usuario of usuarios">
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email}}</td>
+            <td>{{ usuario.dataNascimento }}</td>
             <td>
               <button type="button" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i></button>
               <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
