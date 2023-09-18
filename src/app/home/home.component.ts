@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit  {
 
-  
+  @ViewChild('modalFormulario', {static: true}) modalFormulario: TemplateRef<any> | undefined;
 
+  modalUploadRef: NgbModalRef | undefined;
   nomeCompleto: string | undefined;
   emailInformado: string | undefined;
   dataDeNascimento: string | undefined;
   usuarios: [any] | undefined
-  isModalOpen = false; // Variável para controlar a exibição do modal
+  
 
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private modalService: NgbModal) {}
 
   ngOnInit() {
     this.getDadosFicha();
@@ -26,11 +29,19 @@ export class HomeComponent implements OnInit  {
   getDadosFicha() {
     this.http.get<any>('https://localhost:7267/api/Ficha').subscribe(data => {
       this.usuarios = data;
+      console.log(data)
     });
   }
-  openModal(){
-    this.isModalOpen = true; // Abrir o modal quando o botão é clicado
+  openModalFormularioHome() {
+   
+    //abertura de modal passando a referencia do Componente
+    this.modalUploadRef = this.modalService.open(ModalComponent);
   }
+
+  closeModalHome() {
+    this.modalUploadRef?.close();
+  }
+  
   
 }
 

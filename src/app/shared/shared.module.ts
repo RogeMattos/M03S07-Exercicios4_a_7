@@ -8,6 +8,6 @@ import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
   imports: [CommonModule, RouterModule],
   declarations: [HeaderComponent, SidebarComponent, ModalComponent],
-  exports: [HeaderComponent, SidebarComponent],
+  exports: [HeaderComponent, SidebarComponent, ModalComponent],
 })
 export class SharedModule {}
