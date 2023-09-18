@@ -15,9 +15,9 @@ export class ModalComponent implements OnInit{
   @ViewChild('modalFormulario', {static: true}) modalFormulario: TemplateRef<any> | undefined;
 
   @Output() closeModal: EventEmitter<any> = new EventEmitter();
- 
 
-  usuarioForm?: FormGroup; 
+
+  usuarioForm!: FormGroup;
   modalUploadRef: NgbModalRef | undefined;
   nomeCompleto: string | undefined;
   emailInformado: string | undefined;
@@ -25,7 +25,7 @@ export class ModalComponent implements OnInit{
   id: number | undefined
   usuarios: [any] | undefined
   usuariosDados: IUsuario | undefined
-  
+
   constructor(private activeModal: NgbActiveModal, private http: HttpClient, private modalService: NgbModal) {
 
     this.usuarioForm = new FormGroup({
@@ -37,13 +37,13 @@ export class ModalComponent implements OnInit{
 
   async ngOnInit() {
     // Certifique-se de que 'id' tenha um valor antes de chamar 'getDadosFichaPorId'
-    
+
       this.getDadosFichaPorId();
       this._preencherUsuario();
     }
-    
-    
-  
+
+
+
 
   getDadosFichaPorId() {
     // Use interpolação correta na URL
@@ -71,7 +71,7 @@ export class ModalComponent implements OnInit{
       this.usuarioForm?.get('dataDeNascimento')?.setValue(this.usuariosDados.dataDeNascimento);
     }
   }
-  
-    
+
+
 
 }
